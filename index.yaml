@@ -3,7 +3,7 @@ entries:
   grafana:
   - apiVersion: v2
     appVersion: 9.3.1
-    created: "2022-12-24T16:31:14.556243796+03:00"
+    created: "2022-12-24T16:57:43.978143076+03:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: dd91b4d196ba3ca78ca1513621292850760bf2b25bd2a9ffcf5e44f63a26cf41
     home: https://grafana.net
@@ -25,6 +25,6 @@ entries:
     - https://github.com/grafana/grafana
     type: application
     urls:
-    - https://github.com/asm0jkeee/grafana-study.git/grafana-6.48.0.tgz
+    - https://asm0jkeee.github.io/grafana-study/grafana-6.48.0.tgz
     version: 6.48.0
-generated: "2022-12-24T16:31:14.549131604+03:00"
+generated: "2022-12-24T16:57:43.974594078+03:00"
