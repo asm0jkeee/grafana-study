@@ -693,7 +693,6 @@ grafana.ini:
     url: https://grafana.net
   server:
     root_url: grafana-dh.apps.msa-platform.neoflex.ru
-    domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
   auth.generic_oauth:
     enabled: true
     name: Keycloak-OAuth
@@ -707,7 +706,7 @@ grafana.ini:
     api_url: https://keycloak.msa-platform.neoflex.ru/realms/msa/protocol/openid-connect/userinfo
     client_id: msa-dh-grafana
     client_secret: t3lwrZ0gRT7LOIkw0Ezo2BUIsLkDCNNz
-    role_attribute_path: contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+    role_attribute_path: contains(roles[*], 'administrator') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
       # The full public facing url you use in browser, used for redirects and emails
