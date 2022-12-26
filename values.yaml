@@ -222,7 +222,7 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - grafana-dh.apps.msa-platform.neoflex.ru
+    - http://grafana-dh.apps.msa-platform.neoflex.ru
   ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
   extraPaths: []
   # - path: /*
@@ -690,14 +690,14 @@ grafana.ini:
   log:
     mode: console
   grafana_net:
-    url: https://grafana.net
+    url: http://grafana-dh.apps.msa-platform.neoflex.ru
   server:
-    root_url: grafana-dh.apps.msa-platform.neoflex.ru
+    root_url: http://grafana-dh.apps.msa-platform.neoflex.ru
   auth.generic_oauth:
     enabled: true
     name: Keycloak-OAuth
     allow_sign_up: true
-    scopes: openid, email, profile, offline_access, roles
+    scopes: profile, roles
     email_attribute_path: email
     login_attribute_path: username
     name_attribute_path: full_name
@@ -706,7 +706,11 @@ grafana.ini:
     api_url: https://keycloak.msa-platform.neoflex.ru/realms/msa/protocol/openid-connect/userinfo
     client_id: msa-dh-grafana
     client_secret: t3lwrZ0gRT7LOIkw0Ezo2BUIsLkDCNNz
-    role_attribute_path: contains(roles[*], 'administrator') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+    role_attribute_path: contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+  auth.jwt:
+    enabled: true
+    header_name: X-JWT-Assertion
+    jwk_set_url: https://keycloak.msa-platform.neoflex.ru/realms/msa/protocol/openid-connect/certs
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
       # The full public facing url you use in browser, used for redirects and emails
